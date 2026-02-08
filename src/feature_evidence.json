@@ -1,0 +1,142 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-main-screen-with-a-centered-heading-and-two-buttons-beneath-it-heading-text-must-be-exactly-cia-will-you-be-mine-forever-or-will-stay-for-lifetime-buttons-must-be-labeled-exactly-yes-and-no",
+      "featureTitle": "Create a main screen with a centered heading and two buttons beneath it. Heading text must be exactly: \"Cia will you be mine forever or will stay for lifetime? ❤️\". Buttons must be labeled exactly: \"Yes 💖\" and \"No 💔\".",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css",
+        "frontend/src/screens/QuestionScreen.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-yes-button-flow-on-click-tap-navigate-to-a-success-screen-that-displays-the-exact-success-text-yay-babe-i-just-knew-that-u-always-be-mine-only-and-subtext-love-u-sayang-add-a-small-heart-or-confetti-style-animation-on-the-success-screen-css-js-based-no-external-animation-libraries",
+      "featureTitle": "Implement the \"Yes 💖\" button flow: on click/tap, navigate to a success screen that displays the exact success text \"Yay! Babe I just knew that u always be mine only ❣️ 💕\" and subtext \"Love u sayang ❤️❤️\". Add a small heart or confetti-style animation on the success screen (CSS/JS-based; no external animation libraries).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css",
+        "frontend/src/screens/SuccessScreen.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-no-button-as-an-evasive-button-using-css-position-fixed-the-button-must-move-to-a-new-random-position-anywhere-within-the-full-viewport-window-innerwidth-window-innerheight-while-always-staying-fully-visible-on-screen-account-for-the-button-s-width-height",
+      "featureTitle": "Implement the \"No 💔\" button as an evasive button using CSS position: fixed. The button must move to a new random position anywhere within the full viewport (window.innerWidth/window.innerHeight) while always staying fully visible on screen (account for the button’s width/height).",
+      "files": [
+        "frontend/src/hooks/useEvasiveFixedPosition.ts",
+        "frontend/src/index.css",
+        "frontend/src/screens/QuestionScreen.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-desktop-interaction-when-the-mouse-cursor-hovers-over-or-enters-the-no-button-it-must-immediately-jump-to-a-new-random-fixed-position-within-the-full-viewport",
+      "featureTitle": "Desktop interaction: when the mouse cursor hovers over or enters the \"No 💔\" button, it must immediately jump to a new random fixed position within the full viewport.",
+      "files": [
+        "frontend/src/hooks/useEvasiveFixedPosition.ts",
+        "frontend/src/screens/QuestionScreen.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-mobile-interaction-when-the-user-taps-the-no-button-it-must-immediately-move-to-a-new-random-fixed-position-within-the-full-viewport-and-must-never-remain-in-the-same-place-after-a-tap",
+      "featureTitle": "Mobile interaction: when the user taps the \"No 💔\" button, it must immediately move to a new random fixed position within the full viewport and must never remain in the same place after a tap.",
+      "files": [
+        "frontend/src/hooks/useEvasiveFixedPosition.ts",
+        "frontend/src/screens/QuestionScreen.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-click-safety-if-the-no-button-receives-a-click-tap-event-anyway-it-must-not-trigger-any-navigation-or-success-state-instead-it-must-immediately-move-again-to-another-random-fixed-position-ensure-reliable-movement-by-handling-mouseenter-hover-click-and-touch-events",
+      "featureTitle": "Click safety: if the \"No 💔\" button receives a click/tap event anyway, it must not trigger any navigation or success state. Instead, it must immediately move again to another random fixed position. Ensure reliable movement by handling mouseenter/hover, click, and touch events.",
+      "files": [
+        "frontend/src/hooks/useEvasiveFixedPosition.ts",
+        "frontend/src/screens/QuestionScreen.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-cute-romantic-playful-ui-theme-consistent-across-screens-soft-pink-pastel-red-background-rounded-buttons-smooth-transitions-and-fully-responsive-layout-for-mobile-desktop-add-slightly-dramatic-motion-feel-for-the-evasive-no-button-e-g-quick-jump-with-subtle-transition-without-introducing-external-ui-libraries",
+      "featureTitle": "Apply a cute, romantic, playful UI theme consistent across screens: soft pink/pastel red background, rounded buttons, smooth transitions, and fully responsive layout for mobile/desktop. Add slightly dramatic motion feel for the evasive \"No 💔\" button (e.g., quick jump with subtle transition), without introducing external UI libraries.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/src/screens/QuestionScreen.tsx",
+        "frontend/src/screens/SuccessScreen.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

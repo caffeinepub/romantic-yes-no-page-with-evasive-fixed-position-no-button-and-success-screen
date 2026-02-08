@@ -1,0 +1,17 @@
+{
+  "backend/main.mo": "Empty Motoko actor with no implemented logic.",
+  "feature_evidence.json": "Feature evidence report mapping implemented UI features to source files and components.",
+  "frontend-file-summaries.txt": "Prewritten summaries describing roles of key frontend files such as screens, hooks, and styles.",
+  "frontend/index.css": "Tailwind base and dark-mode theme variables defining color tokens and global styles.",
+  "frontend/index.html": "Base HTML document loading the React app entry point.",
+  "frontend/src/App.tsx": "Controls screen state and switches between question and success screens.",
+  "frontend/src/hooks/useActor.ts": "React hook that creates and manages a backend actor based on Internet Identity authentication.",
+  "frontend/src/hooks/useEvasiveFixedPosition.ts": "Hook that computes random fixed positions for the evasive No button while ensuring visibility.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides authentication state and identity management via Internet Identity.",
+  "frontend/src/index.css": "Romantic-themed Tailwind styles with gradients, button designs, and heart animations.",
+  "frontend/src/main.tsx": "React entry point initializing providers and rendering the App component.",
+  "frontend/src/screens/QuestionScreen.tsx": "Renders the question UI and implements evasive behavior for the No button with event handlers.",
+  "frontend/src/screens/SuccessScreen.tsx": "React component showing a success message with floating heart animations using randomized positions and delays.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration extending theme colors, animations, fonts, and utilities with plugins for typography, container queries, and animations.",
+  "project_state.json": "JSON file describing the project's state, requirements, and features for a romantic web app with evasive button behavior and a success screen."
+}

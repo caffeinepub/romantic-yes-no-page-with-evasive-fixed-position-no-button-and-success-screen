@@ -1,0 +1,161 @@
+{
+  "kind": "build_request",
+  "title": "Romantic yes/no page with evasive fixed-position 'No' button and success screen",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a main screen with a centered heading and two buttons beneath it. Heading text must be exactly: \"Cia will you be mine forever or will stay for lifetime? ❤️\". Buttons must be labeled exactly: \"Yes 💖\" and \"No 💔\".",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "- Centered heading:\n\" Cia will you be mine forever or will stay for lifetime? ❤️\"\n-\n- Two buttons below the heading:\n    1. Yes 💖\n    2. No 💔"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The heading is visually centered on the page (horizontal) and placed above the buttons.",
+        "Both buttons are visible on initial load on desktop and mobile.",
+        "User-facing text matches exactly, including emoji and punctuation."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement the \"Yes 💖\" button flow: on click/tap, navigate to a success screen that displays the exact success text \"Yay! Babe I just knew that u always be mine only ❣️ 💕\" and subtext \"Love u sayang ❤️❤️\". Add a small heart or confetti-style animation on the success screen (CSS/JS-based; no external animation libraries).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "YES BUTTON BEHAVIOR:\n\n- On click or tap, redirect to a success page.\n- Success page text:\n\"Yay! Babe I just knew that u always be mine only ❣️ 💕\"\n- Add a small heart or confetti animation.\n- Subtext:\n\"Love u sayang ❤️❤️\""
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking/tapping \"Yes 💖\" reliably shows the success screen.",
+        "The success screen contains both required text lines exactly as provided.",
+        "A visible heart/confetti-style animation plays on the success screen without using any external libraries.",
+        "Success screen layout remains readable and centered on mobile and desktop."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement the \"No 💔\" button as an evasive button using CSS position: fixed. The button must move to a new random position anywhere within the full viewport (window.innerWidth/window.innerHeight) while always staying fully visible on screen (account for the button’s width/height).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "NO BUTTON BEHAVIOR (VERY IMPORTANT):\n\n- The \"No\" button must be an EVASIVE BUTTON.\n- It should be impossible to click intentionally.\n\nTECHNICAL REQUIREMENTS (IMPORTANT):\n\n- Position the \"No\" button using position: fixed (not relative or absolute inside a container).\n- Randomize its top and left values based on window.innerWidth and window.innerHeight.\n- Ensure the button always stays fully visible inside the screen boundaries."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The \"No 💔\" button uses fixed positioning (not confined to a parent container).",
+        "Each move sets a new (top,left) within viewport bounds such that the entire button remains visible.",
+        "Randomization uses the current viewport size (innerWidth/innerHeight) and adapts when the viewport size changes.",
+        "The \"No 💔\" button can appear anywhere on screen (not only within the centered content area)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Desktop interaction: when the mouse cursor hovers over or enters the \"No 💔\" button, it must immediately jump to a new random fixed position within the full viewport.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "DESKTOP BEHAVIOR:\n\n- When the mouse cursor comes near or hovers over the \"No\" button,\nit should instantly jump to a RANDOM position anywhere on the FULL SCREEN"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On desktop, moving the mouse onto the \"No 💔\" button triggers an immediate position change.",
+        "The movement is repeatable (button continues to evade on subsequent hover/enter events)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Mobile interaction: when the user taps the \"No 💔\" button, it must immediately move to a new random fixed position within the full viewport and must never remain in the same place after a tap.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "MOBILE BEHAVIOR:\n\n- When the user taps the \"No\" button,\nit should immediately move to a new RANDOM position anywhere on the FULL SCREEN.\n- The button must never stay in the same place after a tap."
+        ]
+      },
+      "acceptanceCriteria": [
+        "On touch devices, tapping \"No 💔\" triggers an immediate move.",
+        "After each tap, the new position differs from the previous position.",
+        "Behavior works on common mobile browsers (iOS Safari / Android Chrome-level touch handling)."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Click safety: if the \"No 💔\" button receives a click/tap event anyway, it must not trigger any navigation or success state. Instead, it must immediately move again to another random fixed position. Ensure reliable movement by handling mouseenter/hover, click, and touch events.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "CLICK SAFETY:\n\n- Even if the user somehow manages to click the \"No\" button,\nit should NOT trigger any action.\n- Instead, it should immediately move again to another random position.\n\n- Handle mouseenter, click, and touch events for reliable movement."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking \"No 💔\" never navigates to the success screen and does not change app state besides repositioning.",
+        "A click/tap on \"No 💔\" triggers an additional immediate reposition (even if a hover/touch handler already fired).",
+        "The reposition logic is invoked for mouseenter (desktop), touch interaction (mobile), and click as a fallback."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Apply a cute, romantic, playful UI theme consistent across screens: soft pink/pastel red background, rounded buttons, smooth transitions, and fully responsive layout for mobile/desktop. Add slightly dramatic motion feel for the evasive \"No 💔\" button (e.g., quick jump with subtle transition), without introducing external UI libraries.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "DESIGN REQUIREMENTS:\n\n- Soft pink / pastel red background\n- Rounded buttons with smooth transitions\n- Fun, dramatic movement for the No button\n- Fully responsive on mobile and desktop\n- Cute, romantic, playful vibe\n\nUse only plain HTML, CSS, and JavaScript.\nDo not use any external libraries."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Background uses a soft pink/pastel red palette and is applied consistently on both main and success screens.",
+        "Buttons are rounded with visible hover/press states and smooth transitions.",
+        "Layout remains centered and usable across common viewport sizes (small phones to large desktops).",
+        "No additional third-party UI/animation libraries are added beyond the existing template stack."
+      ]
+    }
+  ],
+  "constraints": [
+    "Frontend must not modify files under frontend/src/components/ui (compose them instead if needed).",
+    "Do not edit immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Backend must remain a single Motoko actor; no extra backend services.",
+    "No external libraries should be added to implement the evasive button or animation (implement with React + CSS/Tailwind and standard DOM APIs)."
+  ],
+  "nonGoals": [
+    "Internet Identity authentication.",
+    "Persisting any data on the backend.",
+    "Adding payments, messaging, notifications, or real-time features.",
+    "Adding additional pages beyond the main question screen and the success screen."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

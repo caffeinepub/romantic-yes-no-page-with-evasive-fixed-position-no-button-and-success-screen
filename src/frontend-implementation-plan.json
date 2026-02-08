@@ -1,0 +1,176 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Romantic yes/no page with evasive fixed-position No button and success screen",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build the main question screen with the exact centered heading and two labeled buttons.",
+      "acceptanceCriteria": [
+        "The heading is visually centered on the page (horizontal) and placed above the buttons.",
+        "Both buttons are visible on initial load on desktop and mobile.",
+        "User-facing text matches exactly, including emoji and punctuation."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the app root UI that renders the main question screen by default and provides a simple in-app screen switch (no extra pages beyond main + success)."
+        },
+        {
+          "path": "frontend/src/screens/QuestionScreen.tsx",
+          "operation": "create",
+          "description": "Implement the centered heading text exactly: \"Cia will you be mine forever or will stay for lifetime? ❤️\" with two buttons labeled exactly: \"Yes 💖\" and \"No 💔\" and responsive layout."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add global styling primitives (Tailwind directives if applicable in this template) plus base layout helpers to ensure centered content and responsive spacing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement the Yes button navigation to a success screen with exact text and a small heart/confetti animation (no external animation libraries).",
+      "acceptanceCriteria": [
+        "Clicking/tapping \"Yes 💖\" reliably shows the success screen.",
+        "The success screen contains both required text lines exactly as provided.",
+        "A visible heart/confetti-style animation plays on the success screen without using any external libraries.",
+        "Success screen layout remains readable and centered on mobile and desktop."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the \"Yes 💖\" action from the question screen to navigate to the success screen using internal React state (or existing routing if present), ensuring only the two required screens exist."
+        },
+        {
+          "path": "frontend/src/screens/SuccessScreen.tsx",
+          "operation": "create",
+          "description": "Create the success screen displaying the exact success text \"Yay! Babe I just knew that u always be mine only ❣️ 💕\" and subtext \"Love u sayang ❤️❤️\", centered and responsive, and render a small heart/confetti animation implemented with React + CSS keyframes only."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add CSS keyframes/classes for a lightweight heart/confetti-style animation used on the success screen (no external libraries)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Make the No button an evasive fixed-position element that jumps to random fully-visible positions within the full viewport.",
+      "acceptanceCriteria": [
+        "The \"No 💔\" button uses fixed positioning (not confined to a parent container).",
+        "Each move sets a new (top,left) within viewport bounds such that the entire button remains visible.",
+        "Randomization uses the current viewport size (innerWidth/innerHeight) and adapts when the viewport size changes.",
+        "The \"No 💔\" button can appear anywhere on screen (not only within the centered content area)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useEvasiveFixedPosition.ts",
+          "operation": "create",
+          "description": "Create a reusable hook that computes random fixed (top,left) positions based on window.innerWidth/innerHeight while accounting for the button’s measured width/height via a ref, keeping it fully on-screen and responding to viewport resize."
+        },
+        {
+          "path": "frontend/src/screens/QuestionScreen.tsx",
+          "operation": "modify",
+          "description": "Render the \"No 💔\" button with CSS position: fixed and apply (top,left) from the evasive-position logic so it can appear anywhere in the viewport, independent of the centered content container."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add a subtle but quick transition for the \"No 💔\" fixed-position jumps (e.g., minimal transition duration) to create a slightly dramatic motion feel while still feeling immediate."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "On desktop, make the No button immediately jump to a new random position on hover/enter.",
+      "acceptanceCriteria": [
+        "On desktop, moving the mouse onto the \"No 💔\" button triggers an immediate position change.",
+        "The movement is repeatable (button continues to evade on subsequent hover/enter events)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/screens/QuestionScreen.tsx",
+          "operation": "modify",
+          "description": "Attach desktop hover/enter handlers (e.g., mouseenter) to the \"No 💔\" fixed-position button to trigger immediate reposition using the shared evasive-position logic, repeatably."
+        },
+        {
+          "path": "frontend/src/hooks/useEvasiveFixedPosition.ts",
+          "operation": "modify",
+          "description": "Expose a stable reposition function that can be called repeatedly from multiple interaction handlers without stale measurements or viewport sizing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "On mobile, make the No button immediately move to a different random position on tap and never stay in the same place after a tap.",
+      "acceptanceCriteria": [
+        "On touch devices, tapping \"No 💔\" triggers an immediate move.",
+        "After each tap, the new position differs from the previous position.",
+        "Behavior works on common mobile browsers (iOS Safari / Android Chrome-level touch handling)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/screens/QuestionScreen.tsx",
+          "operation": "modify",
+          "description": "Add touch-friendly interaction handling (e.g., pointer/touch) for the \"No 💔\" button so a tap triggers an immediate reposition and prevents the position from remaining unchanged after the tap."
+        },
+        {
+          "path": "frontend/src/hooks/useEvasiveFixedPosition.ts",
+          "operation": "modify",
+          "description": "Ensure repositioning avoids repeating the immediately previous position (e.g., retry randomization a small number of times or nudge) so a tap always results in a different (top,left)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Ensure the No button never triggers navigation; if clicked/tapped anyway, it should immediately move again, handling hover/enter, click, and touch reliably.",
+      "acceptanceCriteria": [
+        "Clicking \"No 💔\" never navigates to the success screen and does not change app state besides repositioning.",
+        "A click/tap on \"No 💔\" triggers an additional immediate reposition (even if a hover/touch handler already fired).",
+        "The reposition logic is invoked for mouseenter (desktop), touch interaction (mobile), and click as a fallback."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/screens/QuestionScreen.tsx",
+          "operation": "modify",
+          "description": "Implement click-safety by ensuring the \"No 💔\" button handler never triggers navigation/state changes except repositioning; handle mouseenter + click + touch/pointer events and stop default/propagation as needed to keep behavior reliable."
+        },
+        {
+          "path": "frontend/src/hooks/useEvasiveFixedPosition.ts",
+          "operation": "modify",
+          "description": "Support rapid successive calls (mouseenter then click/touch) by making reposition idempotent and resilient, always producing a valid on-screen position."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Apply a cute romantic theme across both screens with pastel background, rounded buttons, smooth transitions, responsiveness, and dramatic No-button motion feel (no external UI libraries).",
+      "acceptanceCriteria": [
+        "Background uses a soft pink/pastel red palette and is applied consistently on both main and success screens.",
+        "Buttons are rounded with visible hover/press states and smooth transitions.",
+        "Layout remains centered and usable across common viewport sizes (small phones to large desktops).",
+        "No additional third-party UI/animation libraries are added beyond the existing template stack."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Implement the global romantic theme (soft pink/pastel red background, typography defaults, button base styling, smooth transitions) and ensure it applies consistently to both main and success screens."
+        },
+        {
+          "path": "frontend/src/screens/QuestionScreen.tsx",
+          "operation": "modify",
+          "description": "Apply responsive layout and romantic button styling (rounded corners, hover/active states) using existing Tailwind/CSS conventions; keep the centered content readable on mobile/desktop while allowing the fixed-position \"No 💔\" button to roam the full viewport."
+        },
+        {
+          "path": "frontend/src/screens/SuccessScreen.tsx",
+          "operation": "modify",
+          "description": "Match the main screen’s theme (background, typography, spacing) and keep the animation subtle so text remains readable across viewport sizes."
+        }
+      ]
+    }
+  ]
+}
