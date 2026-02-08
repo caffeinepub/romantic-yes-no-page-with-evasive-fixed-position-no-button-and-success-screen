@@ -1,13 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Build a cute, romantic two-screen yes/no page where “Yes 💖” navigates to a celebratory success screen and the fixed-position “No 💔” button evasively jumps around the full viewport on desktop and mobile.
+**Goal:** Publish Version 1 and Version 2 as two separately deployed standalone frontends on different URLs, removing any in-app version selection.
 
 **Planned changes:**
-- Create a main screen with the exact centered heading text and two buttons labeled exactly “Yes 💖” and “No 💔”.
-- Implement “Yes 💖” click/tap navigation to a success screen showing the exact success text and subtext, plus a small CSS/JS heart or confetti-style animation (no external libraries).
-- Implement an evasive “No 💔” button using `position: fixed` that jumps to random in-viewport positions while always staying fully visible (accounting for button size) and adapting to viewport size changes.
-- Add interaction handling so “No 💔” moves immediately on desktop hover/mouseenter, on mobile tap, and also on click as a safety fallback; ensure taps never leave it in the same position and clicks never navigate.
-- Apply a consistent cute, romantic, playful theme across both screens (soft pink/pastel red background, rounded buttons, smooth transitions, responsive centered layout).
+- Remove the single-app version-selection entry flow so each version loads directly at its own deployment root route (`'/'`).
+- Ensure each deployment preserves its version-specific question heading text exactly as specified (Version 1: “Cia will you be mine forever or will stay for lifetime? ❤️”; Version 2: “Khusnul will you be mine forever or will stay for lifetime? ❤️”).
+- Keep all existing behaviors unchanged in both deployments, including the “Yes 💖” success navigation/text/animation and the evasive “No 💔” behavior.
+- Add/adjust build and deploy configuration to produce two distinct frontend artifacts (v1 and v2) from the same repo via configuration (no manual source edits between deployments), with a documented repeatable process.
 
-**User-visible outcome:** Users see the romantic question with “Yes 💖” and an impossible-to-click “No 💔”; tapping “Yes 💖” shows a centered success message with a small celebratory animation, while “No 💔” keeps jumping around the full screen on hover/tap/click.
+**User-visible outcome:** Users can open Version 1 and Version 2 via two different URLs; each loads immediately on `'/'` with its correct heading and the same existing “Yes 💖” and evasive “No 💔” interactions, and both can run independently in separate tabs.

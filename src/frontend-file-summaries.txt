@@ -1,8 +1,15 @@
 {
-  "frontend/src/App.tsx": "Main app component managing screen state (question/success) and rendering the appropriate screen based on user interaction.",
-  "frontend/src/screens/QuestionScreen.tsx": "Question screen displaying the romantic heading and two buttons (Yes/No), with the No button using fixed positioning and evasive behavior on hover/touch/click events.",
+  "frontend/src/App.tsx": "Main app component implementing simple two-route navigation (/ for question screen, /success for success screen) using build-time variant configuration to display the appropriate version-specific heading.",
+  "frontend/src/screens/QuestionScreen.tsx": "Question screen component accepting a configurable heading prop while preserving the existing Yes/No button behaviors, styling, and evasive fixed-position No button logic.",
   "frontend/src/screens/SuccessScreen.tsx": "Success screen showing celebration message with floating hearts animation and a beating heart icon.",
   "frontend/src/hooks/useEvasiveFixedPosition.ts": "Custom hook managing the evasive No button's fixed position with nullable ref support, calculating random viewport positions while ensuring the button stays fully visible and moves to a different location each time.",
   "frontend/src/index.css": "Global styles with romantic pink/pastel OKLCH color system, gradient backgrounds, button styling, and keyframe animations for floating hearts, heart beat, and fade-in effects.",
-  "frontend/tailwind.config.js": "Tailwind configuration extended with custom romantic color tokens, Inter font family, and 3xl border radius for the playful button design."
+  "frontend/tailwind.config.js": "Tailwind configuration extended with custom romantic color tokens, Inter font family, and 3xl border radius for the playful button design.",
+  "frontend/src/screens/VersionSelectScreen.tsx": "Entry screen displaying two buttons that navigate to Version 1 or Version 2, with a tip about opening both in separate tabs.",
+  "frontend/src/config/appVariant.ts": "Build-time configuration module that determines which standalone variant (v1 or v2) is being built based on VITE_APP_VARIANT environment variable and provides the corresponding question heading text.",
+  "frontend/.env.v1": "Version 1 build configuration file setting VITE_APP_VARIANT=v1 for Cia's version.",
+  "frontend/.env.v2": "Version 2 build configuration file setting VITE_APP_VARIANT=v2 for Khusnul's version.",
+  "frontend/scripts/build-v1.sh": "Shell script that builds Version 1 standalone deployment by loading .env.v1 configuration and outputting to dist-v1/ directory.",
+  "frontend/scripts/build-v2.sh": "Shell script that builds Version 2 standalone deployment by loading .env.v2 configuration and outputting to dist-v2/ directory.",
+  "frontend/DEPLOYMENT.md": "Complete deployment documentation explaining how to build and deploy two separate standalone frontends (v1 and v2) from the same repository, with instructions for IC deployment and other hosting providers."
 }

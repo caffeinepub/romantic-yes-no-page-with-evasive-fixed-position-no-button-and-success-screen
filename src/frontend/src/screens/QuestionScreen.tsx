@@ -3,10 +3,11 @@ import { Button } from '@/components/ui/button';
 import { useEvasiveFixedPosition } from '@/hooks/useEvasiveFixedPosition';
 
 interface QuestionScreenProps {
+  heading: string;
   onYes: () => void;
 }
 
-export default function QuestionScreen({ onYes }: QuestionScreenProps) {
+export default function QuestionScreen({ heading, onYes }: QuestionScreenProps) {
   const noButtonRef = useRef<HTMLButtonElement>(null);
   const { position, reposition } = useEvasiveFixedPosition(noButtonRef);
 
@@ -30,7 +31,7 @@ export default function QuestionScreen({ onYes }: QuestionScreenProps) {
       {/* Main content container */}
       <div className="text-center z-10 max-w-2xl mx-auto">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-12 text-romantic-dark leading-tight px-4">
-          Cia will you be mine forever or will stay for lifetime? ❤️
+          {heading}
         </h1>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center px-4">

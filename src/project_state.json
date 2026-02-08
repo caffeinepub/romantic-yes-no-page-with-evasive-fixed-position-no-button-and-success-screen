@@ -1,15 +1,20 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
-  "summary": "Single-page romantic playful web app with centered question, Yes/No buttons, a success page with cute animation, and an evasive No button that moves randomly across the full viewport on hover/tap/click using plain HTML/CSS/JS (no external libraries).",
+  "projectStateVersion": 9,
+  "summary": "Single-page romantic playful web app (plain HTML/CSS/JS) with centered question, Yes/No buttons, success screen with cute animation, and evasive fixed-position No button; must be published/deployed as two separate standalone builds (V1 and V2) on different links/URLs so they can be used at the same time (not combined into a single one-page version selector).",
   "architectural_notes": [
     "Use only plain HTML, CSS, and JavaScript (no external libraries).",
     "Position the 'No' button with CSS position: fixed and randomize top/left using window.innerWidth/innerHeight.",
     "Clamp random positions so the 'No' button stays fully visible within viewport boundaries.",
-    "Handle mouseenter/hover, touch, and click events to ensure evasive movement on desktop and mobile; clicking 'No' must never trigger navigation/action."
+    "Handle mouseenter/hover, touch, and click events to ensure evasive movement on desktop and mobile; clicking 'No' must never trigger navigation/action.",
+    "Heading text must be exactly: \"Khusnul will you be mine forever or will stay for lifetime? ❤️\" (note the leading space in the provided copy if intentional).",
+    "Support deploying/hosting two separate standalone builds (V1 and V2) with independent entry points so they can be used concurrently.",
+    "Deployment must provide two different links/URLs for V1 and V2 (e.g., separate entry points like /v1/ and /v2/), not a single-page in-app version selector."
   ],
-  "known_issues": [],
-  "isFixRequest": false,
+  "known_issues": [
+    "Current build approach appears to combine versions into a single page/flow; user requires separate published links for each version."
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-create-a-main-screen-with-a-centered-heading-and-two-buttons-beneath-it-heading-text-must-be-exactly-cia-will-you-be-mine-forever-or-will-stay-for-lifetime-buttons-must-be-labeled-exactly-yes-and-no",
@@ -66,6 +71,62 @@
         "REQ-7"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-update-the-main-question-screen-centered-heading-text-to-exactly-khusnul-will-you-be-mine-forever-or-will-stay-for-lifetime-while-keeping-the-existing-yes-no-button-labels-and-all-existing-behaviors-unchanged-yes-navigates-to-success-screen-no-remains-evasive-and-fixed-position-across-the-full-viewport",
+      "title": "Update the main (question) screen centered heading text to exactly: \"Khusnul will you be mine forever or will stay for lifetime? ❤️\" while keeping the existing Yes/No button labels and all existing behaviors unchanged (Yes navigates to success screen; No remains evasive and fixed-position across the full viewport).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-simple-in-app-version-selection-entry-screen-that-lets-the-user-open-and-use-both-version-1-and-version-2-independently-i-e-accessible-via-distinct-urls-so-they-can-be-opened-simultaneously-in-separate-browser-tabs-windows",
+      "title": "Add a simple in-app “version selection” entry screen that lets the user open and use both Version 1 and Version 2 independently (i.e., accessible via distinct URLs so they can be opened simultaneously in separate browser tabs/windows).",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-version-1-as-a-standalone-variant-of-the-existing-romantic-yes-no-experience-using-the-version-1-question-heading-text-exactly-cia-will-you-be-mine-forever-or-will-stay-for-lifetime-while-preserving-the-existing-button-labels-and-behaviors-yes-navigates-to-the-existing-success-screen-no-remains-evasive-with-the-same-fixed-position-random-movement-and-click-safety-rules",
+      "title": "Implement “Version 1” as a standalone variant of the existing romantic Yes/No experience, using the Version 1 question heading text exactly: \"Cia will you be mine forever or will stay for lifetime? ❤️\" while preserving the existing button labels and behaviors (Yes navigates to the existing success screen; No remains evasive with the same fixed-position random movement and click-safety rules).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-keep-the-current-experience-as-version-2-with-the-existing-question-heading-text-exactly-khusnul-will-you-be-mine-forever-or-will-stay-for-lifetime-and-preserve-all-current-behaviors-and-styling-for-this-version",
+      "title": "Keep the current experience as “Version 2” with the existing question heading text exactly: \"Khusnul will you be mine forever or will stay for lifetime? ❤️\" and preserve all current behaviors and styling for this version.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-single-app-version-selection-entry-flow-and-change-the-frontend-so-version-1-and-version-2-can-be-published-as-two-separate-standalone-deployments-each-with-its-own-distinct-url-and-its-own-root-route",
+      "title": "Remove the single-app “version selection” entry flow and change the frontend so Version 1 and Version 2 can be published as two separate standalone deployments, each with its own distinct URL and its own root route ('/').",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-each-standalone-deployment-preserves-all-existing-behaviors-and-exact-texts-for-its-version-version-1-uses-heading-text-exactly-cia-will-you-be-mine-forever-or-will-stay-for-lifetime-and-version-2-uses-heading-text-exactly-khusnul-will-you-be-mine-forever-or-will-stay-for-lifetime-both-keep-the-existing-yes-navigation-to-the-success-screen-and-the-evasive-no-behavior-unchanged",
+      "title": "Ensure each standalone deployment preserves all existing behaviors and exact texts for its version: Version 1 uses heading text exactly \"Cia will you be mine forever or will stay for lifetime? ❤️\" and Version 2 uses heading text exactly \"Khusnul will you be mine forever or will stay for lifetime? ❤️\"; both keep the existing \"Yes 💖\" navigation to the success screen and the evasive \"No 💔\" behavior unchanged.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-adjust-project-build-deploy-configuration-so-developers-can-produce-and-deploy-two-distinct-frontend-artifacts-version-1-and-version-2-from-the-same-repo-without-requiring-manual-code-edits-between-deployments",
+      "title": "Add/adjust project build + deploy configuration so developers can produce and deploy two distinct frontend artifacts (Version 1 and Version 2) from the same repo, without requiring manual code edits between deployments.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -90,6 +151,12 @@
     {
       "id": "AR-4",
       "summary": "Cross-device input handling: implement reliable mouseenter/hover, touch, and click event handlers for consistent evasive movement across screen sizes (no external libraries).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Rebuild Version 1 and Version 2 as two separate standalone apps so the user can open and use both simultaneously (instead of only one active app).",
       "reqIds": [],
       "status": "pending"
     }
